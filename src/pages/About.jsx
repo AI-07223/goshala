@@ -1,14 +1,13 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const About = () => {
-  const timeline = [
-    { year: "2015", title: "The Beginning", description: "Started with just 2 injured cows in a small shed." },
-    { year: "2018", title: "Expanding Love", description: "Moved to a larger facility, housing 50+ cattle." },
-    { year: "2020", title: "Medical Unit", description: "Established a 24/7 veterinary clinic on-site." },
-    { year: "2024", title: "Today", description: "Home to 150+ cows, bulls, and calves." },
-  ];
+  const { t } = useLanguage();
+
+  // Use timeline from config (t object) instead of hardcoded
+  const timeline = t.aboutPage.timeline;
 
   return (
     <Layout>
@@ -16,8 +15,8 @@ const About = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-6">Our Journey</h1>
-            <p className="text-xl text-stone-600">From a humble shed to a sanctuary of hope.</p>
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-6">{t.aboutPage.title}</h1>
+            <p className="text-xl text-stone-600">{t.aboutPage.subtitle}</p>
           </div>
 
           <div className="relative">

@@ -5,6 +5,8 @@ import ImpactTeaser from '../components/ImpactTeaser';
 import Image from '../components/Image';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
+import { Heart, CreditCard, Users, Quote } from 'lucide-react';
+import { config } from '../config';
 
 const Home = () => {
   const { t } = useLanguage();
@@ -48,10 +50,10 @@ const Home = () => {
                 {t.mission.description}
               </p>
               <blockquote className="border-l-4 border-orange-300 pl-4 italic text-stone-500 mb-8">
-                "Service to the cow is service to the universe."
+                "{t.mission.quote}"
               </blockquote>
               <a href="/about" className="text-orange-600 font-bold hover:text-orange-700 hover:underline decoration-2 underline-offset-4">
-                Read our full story →
+                {t.mission.readMore}
               </a>
             </motion.div>
 
@@ -59,17 +61,53 @@ const Home = () => {
         </div>
       </section>
 
-      <ImpactTeaser />
+      {config.features.showImpactCards && <ImpactTeaser />}
 
-      {/* Stats Section (Mock) */}
+      {/* How It Works Section */}
+      <section className="py-24 bg-orange-50/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-800 mb-4">{t.homeExtras.howItWorksTitle}</h2>
+            <p className="text-stone-500 text-lg">{t.homeExtras.howItWorksSubtitle}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+             {/* Connector Line (Desktop) */}
+             <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-1 bg-orange-200 z-0"></div>
+
+             {[
+                { icon: <Heart size={32}/>, title: t.homeExtras.step1Title, desc: t.homeExtras.step1Desc },
+                { icon: <CreditCard size={32}/>, title: t.homeExtras.step2Title, desc: t.homeExtras.step2Desc },
+                { icon: <Users size={32}/>, title: t.homeExtras.step3Title, desc: t.homeExtras.step3Desc },
+             ].map((step, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.2 }}
+                  className="relative z-10 text-center"
+                >
+                  <div className="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-orange-100 text-orange-500 mb-6">
+                    {step.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-stone-800 mb-2">{step.title}</h3>
+                  <p className="text-stone-600">{step.desc}</p>
+                </motion.div>
+             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
       <section className="py-20 bg-orange-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { number: "150+", label: "Cows Saved" },
-              { number: "24/7", label: "Medical Care" },
-              { number: "5000+", label: "Meals Served" },
-              { number: "100%", label: "Volunteer Run" }
+              { number: "150+", label: t.stats.saved },
+              { number: "24/7", label: t.stats.care },
+              { number: "5000+", label: t.stats.meals },
+              { number: "100%", label: t.stats.volunteer }
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -85,6 +123,25 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials */}
+      {config.features.showStories && (
+        <section className="py-24 bg-stone-900 text-stone-300">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <Quote className="mx-auto text-orange-500 mb-8" size={48} />
+            <motion.div
+               initial={{ opacity: 0 }}
+               whileInView={{ opacity: 1 }}
+               viewport={{ once: true }}
+            >
+              <p className="text-2xl md:text-3xl font-serif italic leading-relaxed mb-8 text-white">
+                "{t.homeExtras.testimonial1}"
+              </p>
+              <p className="font-bold text-orange-400 tracking-wider uppercase">{t.homeExtras.testimonial1Author}</p>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
     </Layout>
   );
