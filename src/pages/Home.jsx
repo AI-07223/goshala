@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import ImpactTeaser from '../components/ImpactTeaser';
+import Image from '../components/Image';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 
@@ -26,10 +27,10 @@ const Home = () => {
             >
               <div className="absolute -top-4 -left-4 w-24 h-24 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
               <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?q=80&w=2940&auto=format&fit=crop"
                 alt="Feeding cows"
-                className="relative rounded-2xl shadow-2xl z-10 hover:scale-[1.01] transition-transform duration-500"
+                className="relative rounded-2xl shadow-2xl z-10 hover:scale-[1.01] transition-transform duration-500 aspect-[4/3]"
               />
             </motion.div>
 

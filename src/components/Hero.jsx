@@ -11,13 +11,14 @@ const Hero = () => {
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden flex items-center justify-center">
+    <div className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-stone-900">
       {/* Parallax Background */}
       <motion.div
         style={{ y }}
         className="absolute inset-0 z-0"
       >
         <div className="absolute inset-0 bg-black/40 z-10" /> {/* Overlay for text readability */}
+        {/* Using a direct img tag here because Image component handles div wrappers differently for background logic */}
         <img
           src="https://images.unsplash.com/photo-1545634024-34537759a29e?q=80&w=2940&auto=format&fit=crop"
           alt="Cow in field"

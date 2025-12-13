@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { Menu, X, Heart } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,6 +8,15 @@ const Navbar = () => {
   const { t, toggleLanguage, language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  // Check if we are on the home page
+  const isHome = location.pathname === '/';
+
+  // The navbar is "active" (solid background, dark text) if:
+  // 1. We have scrolled down
+  // 2. OR we are NOT on the home page (inner pages need solid navbar)
+  const isNavbarActive = scrolled || !isHome;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,7 +36,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled
+        isNavbarActive
           ? 'bg-white/95 backdrop-blur-md shadow-md py-3'
           : 'bg-transparent py-5'
       }`}
@@ -37,10 +46,10 @@ const Navbar = () => {
         <Link to="/" className="flex items-center space-x-2 group">
            <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
              {/* Simple Cow Icon Placeholder using Lucide for now */}
-             <Heart className={`w-6 h-6 ${scrolled ? 'text-orange-600' : 'text-orange-500'} fill-current`} />
+             <Heart className={`w-6 h-6 ${isNavbarActive ? 'text-orange-600' : 'text-orange-500'} fill-current`} />
            </div>
            <span className={`text-xl font-serif font-bold ${
-             scrolled ? 'text-gray-800' : 'text-white'
+             isNavbarActive ? 'text-gray-800' : 'text-white'
            } transition-colors`}>
              Divya Goshala
            </span>
@@ -54,7 +63,7 @@ const Navbar = () => {
               to={link.path}
               className={({ isActive }) => `
                 font-medium transition-colors hover:text-orange-500
-                ${isActive ? 'text-orange-500' : (scrolled ? 'text-gray-700' : 'text-white')}
+                ${isActive ? 'text-orange-500' : (isNavbarActive ? 'text-gray-700' : 'text-white')}
               `}
             >
               {link.label}
@@ -64,7 +73,7 @@ const Navbar = () => {
           <button
             onClick={toggleLanguage}
             className={`px-3 py-1 rounded-full border transition-all ${
-              scrolled
+              isNavbarActive
                 ? 'border-orange-500 text-orange-500 hover:bg-orange-50'
                 : 'border-white text-white hover:bg-white/20'
             }`}
@@ -85,7 +94,7 @@ const Navbar = () => {
            <button
             onClick={toggleLanguage}
             className={`px-2 py-1 rounded border text-sm ${
-              scrolled
+              isNavbarActive
                 ? 'border-orange-500 text-orange-500'
                 : 'border-white text-white'
             }`}
@@ -93,7 +102,7 @@ const Navbar = () => {
             {language === 'en' ? 'HI' : 'EN'}
           </button>
 
-          <button onClick={() => setIsOpen(!isOpen)} className={scrolled ? 'text-gray-800' : 'text-white'}>
+          <button onClick={() => setIsOpen(!isOpen)} className={isNavbarActive ? 'text-gray-800' : 'text-white'}>
             {isOpen ? <X /> : <Menu />}
           </button>
         </div>

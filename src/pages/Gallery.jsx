@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
+import Image from '../components/Image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ZoomIn } from 'lucide-react';
 
@@ -61,7 +62,7 @@ const Gallery = () => {
                   className="relative group cursor-pointer overflow-hidden rounded-xl shadow-lg aspect-[4/3]"
                   onClick={() => setSelectedImage(image)}
                 >
-                  <img
+                  <Image
                     src={image.src}
                     alt={image.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
@@ -96,6 +97,7 @@ const Gallery = () => {
             >
               <X size={32} />
             </button>
+            {/* Using basic img for lightbox as we want full control and Image component has wrapper styling */}
             <motion.img
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
