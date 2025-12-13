@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  /* Spiritual & Traditional Palette */
+  --color-saffron: #FF9933;
+  --color-saffron-dark: #D67A18;
+  --color-saffron-light: #FFB366;
+
+  --color-earth: #8B4513;
+  --color-earth-light: #A0522D;
+
+  --color-cream: #FFFDD0;
+  --color-cream-light: #FFFEF0;
+
+  --color-green: #2E5936; /* Deep forest green for balance */
+
+  --color-text-main: #333333;
+  --color-text-light: #666666;
+  --color-white: #FFFFFF;
+
+  /* Typography */
+  --font-heading: 'Merriweather', 'Georgia', serif;
+  --font-body: 'Inter', 'Helvetica', sans-serif;
+
+  /* Shadows & Depth */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-cream-light);
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-earth);
+  margin-bottom: 1rem;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-saffron);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-saffron-dark);
+}
