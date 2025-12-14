@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Gallery from './pages/Gallery';
 import Donate from './pages/Donate';
+import Adopt from './pages/Adopt';
 import Contact from './pages/Contact';
 import ScrollToTop from './components/ScrollToTop';
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/donate" element={<Donate />} />
+          <Route path="/adopt" element={<Adopt />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </Router>

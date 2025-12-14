@@ -16,6 +16,14 @@ export const config = {
     showNewsletter: true,
   },
 
+  // Mock Data for "Adopt a Cow"
+  adoptableCows: [
+    { id: 101, name: "Gauri", breed: "Gir", age: "5 Years", img: "https://images.unsplash.com/photo-1545634024-34537759a29e?q=80&w=2940&auto=format&fit=crop", desc: "Gentle soul, loves fresh grass." },
+    { id: 102, name: "Nandi", breed: "Sahiwal", age: "3 Years", img: "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?q=80&w=2940&auto=format&fit=crop", desc: "Rescued from street, very playful." },
+    { id: 103, name: "Shyama", breed: "Rathi", age: "7 Years", img: "https://images.unsplash.com/photo-1605001011156-cbf0b0f6f05c?q=80&w=2940&auto=format&fit=crop", desc: "Mother of two, needs medical care." },
+    { id: 104, name: "Bhole", breed: "Tharparkar", age: "4 Years", img: "https://images.unsplash.com/photo-1523480717984-24cba3ebae92?q=80&w=2940&auto=format&fit=crop", desc: "Strong bull, protector of the herd." },
+  ],
+
   // Content (English & Hindi)
   content: {
     en: {
@@ -24,6 +32,7 @@ export const config = {
         about: "About",
         gallery: "Gallery",
         donate: "Donate",
+        adopt: "Adopt",
         contact: "Contact",
       },
       hero: {
@@ -60,6 +69,16 @@ export const config = {
          testimonial2: "Transparency is what I love about them. I know my donation actually feeds a cow.",
          testimonial2Author: "- Anjali Singh, Volunteer"
       },
+      initiatives: {
+        title: "Our Initiatives",
+        subtitle: "Holistic care for the environment and Gauvansh.",
+        items: [
+          { title: "Rescuing & Caring", desc: "We rescue injured and abandoned cows from streets and provide immediate medical attention." },
+          { title: "Organic Farming", desc: "Promoting chemical-free farming using cow dung manure to rejuvenate soil health." },
+          { title: "Free Milk Distribution", desc: "Distributing milk to saints, ashrams, and the needy without commercial intent." },
+          { title: "Bio-Gas Plant", desc: "Generating clean energy from cow dung to power our sanctuary sustainably." }
+        ]
+      },
       footer: {
         copyright: "© 2024 Divya Goshala. All rights reserved.",
         quote: "The cow is the mother of all creatures.",
@@ -93,9 +112,9 @@ export const config = {
         feeding: "Feeding",
       },
       donatePage: {
-        title: "Make a Difference",
-        subtitle: "Your contribution directly saves lives.",
-        chooseImpact: "Choose Your Impact",
+        title: "Book Your Sewa",
+        subtitle: "Choose a cause to support.",
+        chooseImpact: "Seva Options",
         customAmount: "Custom Amount (₹)",
         upiTitle: "Scan to Donate via UPI",
         upiSubtitle: "Supports GPay, PhonePe, Paytm",
@@ -104,11 +123,20 @@ export const config = {
         accNo: "Account No",
         ifsc: "IFSC Code",
         impacts: [
-           { value: 100, label: "Feed a cow for a meal" },
-           { value: 500, label: "Feed a cow for a day" },
-           { value: 2500, label: "Feed a cow for a week" },
-           { value: 5000, label: "Medical Kit for one cow" },
+           { value: 100, label: "Green Fodder (Gau Grass)", desc: "Feed a cow fresh green grass." },
+           { value: 500, label: "Full Day Meal", desc: "Complete nutrition for one cow for a day." },
+           { value: 2500, label: "Medical Emergency", desc: "Contribute to the surgery/care of an injured cow." },
+           { value: 11000, label: "Adopt a Cow (Yearly)", desc: "Support all needs of one cow for a year." },
+           { value: 5100, label: "Sadhu Seva", desc: "Provide milk and food to saints in need." },
+           { value: 2100, label: "General Donation", desc: "Use where needed most." },
         ]
+      },
+      adoptPage: {
+        title: "Adopt a Gauvansh",
+        subtitle: "Select a soul to support and build a lifelong bond.",
+        adoptBtn: "Adopt Now",
+        breed: "Breed",
+        age: "Age"
       },
       contactPage: {
         title: "Get in Touch",
@@ -128,7 +156,8 @@ export const config = {
         home: "मुख्य पृष्ठ",
         about: "हमारे बारे में",
         gallery: "तस्वीरें",
-        donate: "दान करें",
+        donate: "सेवा बुक करें",
+        adopt: "गोद लें",
         contact: "संपर्क",
       },
       hero: {
@@ -165,6 +194,16 @@ export const config = {
          testimonial2: "पारदर्शिता ही मुझे इनके बारे में पसंद है। मुझे पता है कि मेरा दान वास्तव में गाय को खिलाता है।",
          testimonial2Author: "- अंजलि सिंह, स्वयंसेवक"
       },
+      initiatives: {
+        title: "हमारी पहल",
+        subtitle: "पर्यावरण और गौवंश के लिए समग्र देखभाल।",
+        items: [
+          { title: "बचाव और देखभाल", desc: "हम सड़कों से घायल और लावारिस गायों को बचाते हैं और तत्काल चिकित्सा प्रदान करते हैं।" },
+          { title: "जैविक खेती", desc: "मिट्टी के स्वास्थ्य को फिर से जीवंत करने के लिए गोबर की खाद का उपयोग करके रसायन मुक्त खेती को बढ़ावा देना।" },
+          { title: "निःशुल्क दुग्ध वितरण", desc: "व्यावसायिक उद्देश्य के बिना संतों, आश्रमों और जरूरतमंदों को दूध वितरित करना।" },
+          { title: "बायो-गैस संयंत्र", desc: "हमारे अभयारण्य को स्थायी रूप से बिजली देने के लिए गाय के गोबर से स्वच्छ ऊर्जा उत्पन्न करना।" }
+        ]
+      },
       footer: {
         copyright: "© 2024 दिव्य गौशाला। सर्वाधिकार सुरक्षित।",
         quote: "गायो विश्वस्य मातरः।",
@@ -198,9 +237,9 @@ export const config = {
         feeding: "भोजन",
       },
       donatePage: {
-        title: "परिवर्तन लाएं",
-        subtitle: "आपका योगदान सीधे जीवन बचाता है।",
-        chooseImpact: "अपना प्रभाव चुनें",
+        title: "अपनी सेवा बुक करें",
+        subtitle: "समर्थन के लिए एक कारण चुनें।",
+        chooseImpact: "सेवा विकल्प",
         customAmount: "कस्टम राशि (₹)",
         upiTitle: "UPI के माध्यम से दान करें",
         upiSubtitle: "GPay, PhonePe, Paytm का समर्थन करता है",
@@ -209,11 +248,20 @@ export const config = {
         accNo: "खाता संख्या",
         ifsc: "IFSC कोड",
         impacts: [
-           { value: 100, label: "एक गाय को भोजन कराएं" },
-           { value: 500, label: "एक गाय को दिन भर भोजन कराएं" },
-           { value: 2500, label: "एक गाय को सप्ताह भर भोजन कराएं" },
-           { value: 5000, label: "एक गाय के लिए चिकित्सा किट" },
+           { value: 100, label: "हरी घास (गौ ग्रास)", desc: "गाय को ताजी हरी घास खिलाएं।" },
+           { value: 500, label: "पूरे दिन का भोजन", desc: "एक गाय के लिए एक दिन का पूरा पोषण।" },
+           { value: 2500, label: "चिकित्सा आपातकाल", desc: "घायल गाय की सर्जरी/देखभाल में योगदान करें।" },
+           { value: 11000, label: "गाय गोद लें (वार्षिक)", desc: "एक वर्ष के लिए एक गाय की सभी जरूरतों का समर्थन करें।" },
+           { value: 5100, label: "साधु सेवा", desc: "जरूरतमंद संतों को दूध और भोजन उपलब्ध कराएं।" },
+           { value: 2100, label: "सामान्य दान", desc: "जहां सबसे ज्यादा जरूरत हो वहां उपयोग करें।" },
         ]
+      },
+      adoptPage: {
+        title: "एक गौवंश गोद लें",
+        subtitle: "समर्थन करने के लिए एक आत्मा चुनें और जीवन भर का बंधन बनाएं।",
+        adoptBtn: "अभी गोद लें",
+        breed: "नस्ल",
+        age: "उम्र"
       },
       contactPage: {
         title: "संपर्क करें",

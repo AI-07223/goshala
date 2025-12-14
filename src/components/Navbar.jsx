@@ -30,6 +30,7 @@ const Navbar = () => {
     { path: '/', label: t.nav.home },
     { path: '/about', label: t.nav.about },
     { path: '/gallery', label: t.nav.gallery },
+    { path: '/adopt', label: t.nav.adopt }, // Added Adopt link
     { path: '/contact', label: t.nav.contact },
   ];
 

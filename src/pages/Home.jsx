@@ -8,7 +8,7 @@ import CountUpStats from '../components/ui/CountUpStats';
 import SectionDivider from '../components/ui/SectionDivider';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
-import { Heart, CreditCard, Users, Quote } from 'lucide-react';
+import { Heart, CreditCard, Users, Quote, Leaf, Droplet, Sun } from 'lucide-react';
 import { config } from '../config';
 
 const Home = () => {
@@ -61,8 +61,38 @@ const Home = () => {
         <SectionDivider type="curve" color="fill-white" flip={true} />
       </section>
 
+      {/* Initiatives Section (Ref: What We Do) */}
+      <section className="py-32 bg-white relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-4">{t.initiatives.title}</h2>
+              <p className="text-stone-500 text-xl">{t.initiatives.subtitle}</p>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {t.initiatives.items.map((item, index) => (
+              <Reveal key={index} delay={index * 0.1}>
+                <div className="bg-stone-50 p-8 rounded-2xl border border-stone-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col items-center text-center">
+                  <div className="mb-6 p-4 bg-white rounded-full text-orange-500 shadow-sm">
+                    {index === 0 && <Heart size={32} />}
+                    {index === 1 && <Leaf size={32} />}
+                    {index === 2 && <Droplet size={32} />}
+                    {index === 3 && <Sun size={32} />}
+                  </div>
+                  <h3 className="text-xl font-bold text-stone-800 mb-3">{item.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+        <SectionDivider type="wave" color="fill-orange-50/30" />
+      </section>
+
       {config.features.showImpactCards && (
-        <div className="relative z-10 -mt-20">
+        <div className="relative z-10">
            <ImpactTeaser />
         </div>
       )}
