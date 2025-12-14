@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Heart } from 'lucide-react';
+import { Menu, X, Heart, User } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -30,7 +30,7 @@ const Navbar = () => {
     { path: '/', label: t.nav.home },
     { path: '/about', label: t.nav.about },
     { path: '/gallery', label: t.nav.gallery },
-    { path: '/adopt', label: t.nav.adopt }, // Added Adopt link
+    { path: '/adopt', label: t.nav.adopt },
     { path: '/contact', label: t.nav.contact },
   ];
 
@@ -80,6 +80,12 @@ const Navbar = () => {
             }`}
           >
             {language === 'en' ? 'HI' : 'EN'}
+          </button>
+
+          {/* Login Placeholder */}
+          <button className={`flex items-center gap-1 font-medium transition-colors hover:text-orange-500 ${isNavbarActive ? 'text-gray-700' : 'text-white'}`}>
+             <User size={18} />
+             {t.nav.login}
           </button>
 
           <Link
@@ -132,6 +138,12 @@ const Navbar = () => {
                   {link.label}
                 </NavLink>
               ))}
+
+               <button className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-orange-600 font-medium">
+                 <User size={18} />
+                 {t.nav.login}
+               </button>
+
                <Link
                 to="/donate"
                 onClick={() => setIsOpen(false)}

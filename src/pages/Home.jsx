@@ -8,11 +8,21 @@ import CountUpStats from '../components/ui/CountUpStats';
 import SectionDivider from '../components/ui/SectionDivider';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
-import { Heart, CreditCard, Users, Quote, Leaf, Droplet, Sun } from 'lucide-react';
+import { Heart, CreditCard, Users, Quote, Leaf, Droplet, Sun, Shield, Award, FileCheck, BadgeCheck, ArrowRight, Calendar } from 'lucide-react';
 import { config } from '../config';
 
 const Home = () => {
   const { t } = useLanguage();
+
+  const getIcon = (name) => {
+    switch(name) {
+      case 'Shield': return <Shield size={32} />;
+      case 'Award': return <Award size={32} />;
+      case 'FileCheck': return <FileCheck size={32} />;
+      case 'BadgeCheck': return <BadgeCheck size={32} />;
+      default: return <Award size={32} />;
+    }
+  };
 
   return (
     <Layout>
@@ -176,6 +186,58 @@ const Home = () => {
           </div>
         </section>
       )}
+
+      {/* Latest Updates (Blog) */}
+      <section className="py-24 bg-stone-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Reveal>
+            <div className="flex justify-between items-end mb-12">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-800 mb-2">{t.homeExtras.latestUpdatesTitle}</h2>
+                <div className="w-20 h-1 bg-orange-500 rounded-full"></div>
+              </div>
+              <button className="hidden md:flex items-center gap-2 text-orange-600 font-bold hover:text-orange-700 transition-colors">
+                {t.homeExtras.readMoreBtn} <ArrowRight size={20} />
+              </button>
+            </div>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {config.blogPosts.map((post, i) => (
+              <Reveal key={post.id} delay={i * 0.1}>
+                <div className="bg-white p-6 rounded-xl shadow-md border border-stone-100 hover:shadow-xl transition-all duration-300 group cursor-pointer">
+                  <div className="flex items-center gap-2 text-xs font-bold text-orange-500 uppercase tracking-wider mb-3">
+                    <Calendar size={14} />
+                    {post.date}
+                  </div>
+                  <h3 className="text-xl font-bold text-stone-800 mb-3 group-hover:text-orange-600 transition-colors">{post.title}</h3>
+                  <p className="text-stone-600 text-sm leading-relaxed mb-4">{post.excerpt}</p>
+                  <span className="text-sm font-bold text-stone-400 group-hover:text-orange-500 flex items-center gap-1 transition-colors">
+                    Read Article <ArrowRight size={14} />
+                  </span>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Accreditations */}
+      <section className="py-12 bg-white border-t border-stone-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h3 className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-8">{t.homeExtras.accreditationsTitle}</h3>
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+            {config.accreditations.map((acc) => (
+              <div key={acc.id} className="flex flex-col items-center gap-2 group">
+                <div className="p-3 bg-stone-50 rounded-full text-stone-600 group-hover:text-orange-500 group-hover:bg-orange-50 transition-colors">
+                  {getIcon(acc.icon)}
+                </div>
+                <span className="text-xs font-bold text-stone-500">{acc.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
     </Layout>
   );

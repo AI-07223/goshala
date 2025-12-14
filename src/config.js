@@ -24,6 +24,21 @@ export const config = {
     { id: 104, name: "Bhole", breed: "Tharparkar", age: "4 Years", img: "https://images.unsplash.com/photo-1523480717984-24cba3ebae92?q=80&w=2940&auto=format&fit=crop", desc: "Strong bull, protector of the herd." },
   ],
 
+  // Mock Data for Accreditations (using lucide icons or image placeholders)
+  accreditations: [
+    { id: 1, name: "Animal Welfare Board", icon: "Shield" },
+    { id: 2, name: "80G Tax Exemption", icon: "FileCheck" },
+    { id: 3, name: "CSR Certified", icon: "Award" },
+    { id: 4, name: "ISO 9001:2015", icon: "BadgeCheck" },
+  ],
+
+  // Mock Blog Posts
+  blogPosts: [
+    { id: 1, title: "Winter Drive Success", date: "Dec 10, 2024", excerpt: "Thanks to your donations, we distributed 500 blankets." },
+    { id: 2, title: "New Shed Opening", date: "Nov 24, 2024", excerpt: "Inaugurated a new shelter for 50 more cows." },
+    { id: 3, title: "Govardhan Puja", date: "Nov 15, 2024", excerpt: "Celebrations at the Goshala with 1000+ devotees." },
+  ],
+
   // Content (English & Hindi)
   content: {
     en: {
@@ -34,6 +49,7 @@ export const config = {
         donate: "Donate",
         adopt: "Adopt",
         contact: "Contact",
+        login: "Login",
       },
       hero: {
         title: "Protect & Serve Mother Cow",
@@ -67,7 +83,10 @@ export const config = {
          testimonial1: "Visiting this Goshala changed my perspective on life. The peace here is divine.",
          testimonial1Author: "- Rajesh Kumar, Donor",
          testimonial2: "Transparency is what I love about them. I know my donation actually feeds a cow.",
-         testimonial2Author: "- Anjali Singh, Volunteer"
+         testimonial2Author: "- Anjali Singh, Volunteer",
+         accreditationsTitle: "Accreditations & Recognitions",
+         latestUpdatesTitle: "Latest News & Updates",
+         readMoreBtn: "Read More",
       },
       initiatives: {
         title: "Our Initiatives",
@@ -129,6 +148,9 @@ export const config = {
            { value: 11000, label: "Adopt a Cow (Yearly)", desc: "Support all needs of one cow for a year." },
            { value: 5100, label: "Sadhu Seva", desc: "Provide milk and food to saints in need." },
            { value: 2100, label: "General Donation", desc: "Use where needed most." },
+           { value: 1100, label: "Celebrate Birthday", desc: "Special puja on your birthday." },
+           { value: 1100, label: "Shradh Service", desc: "Feed cows in memory of ancestors." },
+           { value: 500, label: "Food for Poor", desc: "Distribute food packets to the needy." },
         ]
       },
       adoptPage: {
@@ -159,6 +181,7 @@ export const config = {
         donate: "सेवा बुक करें",
         adopt: "गोद लें",
         contact: "संपर्क",
+        login: "लॉग इन",
       },
       hero: {
         title: "गौ माता की सेवा और रक्षा",
@@ -192,7 +215,10 @@ export const config = {
          testimonial1: "इस गौशाला में आने से मेरा जीवन के प्रति नजरिया बदल गया। यहाँ की शांति दिव्य है।",
          testimonial1Author: "- राजेश कुमार, दानकर्ता",
          testimonial2: "पारदर्शिता ही मुझे इनके बारे में पसंद है। मुझे पता है कि मेरा दान वास्तव में गाय को खिलाता है।",
-         testimonial2Author: "- अंजलि सिंह, स्वयंसेवक"
+         testimonial2Author: "- अंजलि सिंह, स्वयंसेवक",
+         accreditationsTitle: "मान्यताएं और पुरस्कार",
+         latestUpdatesTitle: "नवीनतम समाचार",
+         readMoreBtn: "और पढ़ें",
       },
       initiatives: {
         title: "हमारी पहल",
@@ -254,6 +280,9 @@ export const config = {
            { value: 11000, label: "गाय गोद लें (वार्षिक)", desc: "एक वर्ष के लिए एक गाय की सभी जरूरतों का समर्थन करें।" },
            { value: 5100, label: "साधु सेवा", desc: "जरूरतमंद संतों को दूध और भोजन उपलब्ध कराएं।" },
            { value: 2100, label: "सामान्य दान", desc: "जहां सबसे ज्यादा जरूरत हो वहां उपयोग करें।" },
+           { value: 1100, label: "जन्मदिन मनाएं", desc: "अपने जन्मदिन पर विशेष पूजा।" },
+           { value: 1100, label: "श्राद्ध सेवा", desc: "पूर्वजों की याद में गायों को खिलाएं।" },
+           { value: 500, label: "गरीबों के लिए भोजन", desc: "जरूरतमंदों को भोजन के पैकेट वितरित करें।" },
         ]
       },
       adoptPage: {

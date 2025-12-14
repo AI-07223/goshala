@@ -13,9 +13,8 @@ const Adopt = () => {
   const navigate = useNavigate();
 
   const handleAdopt = (cowName) => {
-    // In a real app, this would add to cart or open a specific payment flow
-    // For now, redirect to Donate page with a state or just let them donate generally
-    navigate('/donate');
+    // Navigate to Donate page with a query parameter to pre-select "Adopt a Cow"
+    navigate('/donate?category=adopt');
   };
 
   return (

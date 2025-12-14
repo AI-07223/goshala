@@ -1,17 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import Reveal from '../components/ui/Reveal';
 import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import { QrCode, Copy, Check, Heart, Wheat, HeartPulse, Building, User } from 'lucide-react';
+import { useSearchParams } from 'react-router-dom';
 
 const Donate = () => {
   const { t } = useLanguage();
   const [amount, setAmount] = useState(500);
   const [selectedSeva, setSelectedSeva] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [searchParams] = useSearchParams();
 
   const impactLevels = t.donatePage.impacts;
+
+  useEffect(() => {
+    const category = searchParams.get('category');
+    if (category === 'adopt') {
+      // Find the impact level for adoption (value 11000)
+      const adoptLevel = impactLevels.find(l => l.value === 11000);
+      if (adoptLevel) {
+        handleSelectSeva(adoptLevel);
+      }
+    }
+  }, [searchParams, impactLevels]);
 
   // Helper to get icon for seva type
   const getIcon = (label) => {
@@ -19,7 +32,7 @@ const Donate = () => {
     if (l.includes('grass') || l.includes('meal') || l.includes('food')) return <Wheat size={24} />;
     if (l.includes('medical') || l.includes('kit')) return <HeartPulse size={24} />;
     if (l.includes('adopt')) return <Heart size={24} />;
-    if (l.includes('sadhu') || l.includes('human')) return <User size={24} />;
+    if (l.includes('sadhu') || l.includes('human') || l.includes('birth') || l.includes('shradh')) return <User size={24} />;
     return <Building size={24} />;
   };
 
