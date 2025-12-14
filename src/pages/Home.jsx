@@ -3,6 +3,9 @@ import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import ImpactTeaser from '../components/ImpactTeaser';
 import Image from '../components/Image';
+import Reveal from '../components/ui/Reveal';
+import CountUpStats from '../components/ui/CountUpStats';
+import SectionDivider from '../components/ui/SectionDivider';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 import { Heart, CreditCard, Users, Quote } from 'lucide-react';
@@ -16,129 +19,130 @@ const Home = () => {
       <Hero />
 
       {/* Mission Section */}
-      <section className="py-24 bg-stone-50 overflow-hidden">
+      <section className="relative py-32 bg-stone-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-              <Image
-                src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?q=80&w=2940&auto=format&fit=crop"
-                alt="Feeding cows"
-                className="relative rounded-2xl shadow-2xl z-10 hover:scale-[1.01] transition-transform duration-500 aspect-[4/3]"
-              />
-            </motion.div>
+            <Reveal width="100%">
+              <div className="relative group">
+                <div className="absolute -top-4 -left-4 w-32 h-32 bg-orange-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                <div className="relative rounded-2xl overflow-hidden shadow-2xl transform transition-transform duration-700 group-hover:scale-[1.02]">
+                  <Image
+                    src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?q=80&w=2940&auto=format&fit=crop"
+                    alt="Feeding cows"
+                    className="aspect-[4/3]"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+              </div>
+            </Reveal>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
+            <Reveal delay={0.2}>
               <h2 className="text-4xl lg:text-5xl font-serif font-bold text-stone-800 mb-6 leading-tight">
                 {t.mission.title}
               </h2>
-              <div className="w-20 h-1 bg-orange-500 mb-8"></div>
-              <p className="text-lg text-stone-600 leading-relaxed mb-8">
+              <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 to-yellow-500 mb-8 rounded-full"></div>
+              <p className="text-xl text-stone-600 leading-relaxed mb-8">
                 {t.mission.description}
               </p>
-              <blockquote className="border-l-4 border-orange-300 pl-4 italic text-stone-500 mb-8">
+              <blockquote className="border-l-4 border-orange-300 pl-6 italic text-stone-500 mb-10 text-lg">
                 "{t.mission.quote}"
               </blockquote>
-              <a href="/about" className="text-orange-600 font-bold hover:text-orange-700 hover:underline decoration-2 underline-offset-4">
-                {t.mission.readMore}
+              <a href="/about" className="inline-flex items-center gap-2 text-orange-600 font-bold hover:text-orange-700 hover:translate-x-2 transition-all duration-300 uppercase tracking-wider text-sm">
+                {t.mission.readMore} <span className="text-xl">→</span>
               </a>
-            </motion.div>
+            </Reveal>
 
           </div>
         </div>
+
+        {/* Organic Divider */}
+        <SectionDivider type="curve" color="fill-white" flip={true} />
       </section>
 
-      {config.features.showImpactCards && <ImpactTeaser />}
+      {config.features.showImpactCards && (
+        <div className="relative z-10 -mt-20">
+           <ImpactTeaser />
+        </div>
+      )}
 
       {/* How It Works Section */}
-      <section className="py-24 bg-orange-50/50">
+      <section className="py-32 bg-orange-50/30 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-stone-800 mb-4">{t.homeExtras.howItWorksTitle}</h2>
-            <p className="text-stone-500 text-lg">{t.homeExtras.howItWorksSubtitle}</p>
-          </div>
+          <Reveal>
+            <div className="text-center mb-20">
+              <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-4">{t.homeExtras.howItWorksTitle}</h2>
+              <p className="text-stone-500 text-xl">{t.homeExtras.howItWorksSubtitle}</p>
+            </div>
+          </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
              {/* Connector Line (Desktop) */}
-             <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-1 bg-orange-200 z-0"></div>
+             <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-orange-200 z-0"></div>
 
              {[
                 { icon: <Heart size={32}/>, title: t.homeExtras.step1Title, desc: t.homeExtras.step1Desc },
                 { icon: <CreditCard size={32}/>, title: t.homeExtras.step2Title, desc: t.homeExtras.step2Desc },
                 { icon: <Users size={32}/>, title: t.homeExtras.step3Title, desc: t.homeExtras.step3Desc },
              ].map((step, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.2 }}
-                  className="relative z-10 text-center"
-                >
-                  <div className="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg border-4 border-orange-100 text-orange-500 mb-6">
-                    {step.icon}
+                <Reveal key={idx} delay={idx * 0.2}>
+                  <div className="relative z-10 text-center group">
+                    <div className="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center shadow-xl border-4 border-orange-100 text-orange-500 mb-8 transform transition-all duration-300 group-hover:scale-110 group-hover:border-orange-300">
+                      {step.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-stone-800 mb-3">{step.title}</h3>
+                    <p className="text-stone-600 leading-relaxed px-4">{step.desc}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-stone-800 mb-2">{step.title}</h3>
-                  <p className="text-stone-600">{step.desc}</p>
-                </motion.div>
+                </Reveal>
              ))}
           </div>
         </div>
+
+        {/* Divider to stats */}
+        <SectionDivider type="wave" color="fill-orange-600" />
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-orange-600 text-white">
+      <section className="py-32 bg-orange-600 text-white relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
             {[
               { number: "150+", label: t.stats.saved },
               { number: "24/7", label: t.stats.care },
               { number: "5000+", label: t.stats.meals },
               { number: "100%", label: t.stats.volunteer }
             ].map((stat, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
-                <div className="text-4xl md:text-5xl font-bold mb-2">{stat.number}</div>
-                <div className="text-orange-200 font-medium">{stat.label}</div>
-              </motion.div>
+              <Reveal key={i} delay={i * 0.1}>
+                <div className="p-4 rounded-xl hover:bg-white/5 transition-colors duration-300">
+                  <div className="text-5xl md:text-6xl font-bold mb-4 font-serif">
+                    <CountUpStats end={stat.number} />
+                  </div>
+                  <div className="text-orange-100 font-medium text-lg uppercase tracking-wider opacity-90">{stat.label}</div>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
+
+        {/* Divider to testimonials */}
+        <SectionDivider type="curve" color="fill-stone-900" />
       </section>
 
       {/* Testimonials */}
       {config.features.showStories && (
-        <section className="py-24 bg-stone-900 text-stone-300">
+        <section className="py-32 bg-stone-900 text-stone-300">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <Quote className="mx-auto text-orange-500 mb-8" size={48} />
-            <motion.div
-               initial={{ opacity: 0 }}
-               whileInView={{ opacity: 1 }}
-               viewport={{ once: true }}
-            >
-              <p className="text-2xl md:text-3xl font-serif italic leading-relaxed mb-8 text-white">
+            <Quote className="mx-auto text-orange-500 mb-10 opacity-50" size={64} />
+            <Reveal>
+              <p className="text-3xl md:text-4xl font-serif italic leading-relaxed mb-10 text-white/90">
                 "{t.homeExtras.testimonial1}"
               </p>
-              <p className="font-bold text-orange-400 tracking-wider uppercase">{t.homeExtras.testimonial1Author}</p>
-            </motion.div>
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-1 bg-orange-500 rounded-full mb-4"></div>
+                <p className="font-bold text-orange-400 tracking-widest uppercase text-sm">{t.homeExtras.testimonial1Author}</p>
+              </div>
+            </Reveal>
           </div>
         </section>
       )}
