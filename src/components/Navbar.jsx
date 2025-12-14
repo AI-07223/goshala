@@ -7,19 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Navbar = () => {
   const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-
-  // With TopBar, Navbar is always white background (below hero) or sticky white
-  // To match reference, we make it white and clean.
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 40); // TopBar height approx
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navLinks = [
     { path: '/', label: t.nav.home },
@@ -30,12 +18,10 @@ const Navbar = () => {
   ];
 
   return (
-    <nav
-      className={`sticky top-0 w-full z-40 transition-all duration-300 bg-white shadow-md`}
-    >
+    <nav className="sticky top-0 w-full z-40 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-3 group">
+        <Link to="/" className="flex items-center space-x-3 group" onClick={() => setIsOpen(false)}>
            <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
              <Heart className="w-7 h-7 text-orange-600 fill-current" />
            </div>
@@ -77,7 +63,11 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-4">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-800">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="text-gray-800 p-2 hover:bg-gray-100 rounded-lg transition-colors"
+            aria-label="Toggle menu"
+          >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -90,7 +80,8 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
+            transition={{ duration: 0.2 }}
+            className="md:hidden bg-white border-t border-gray-100 overflow-hidden absolute w-full shadow-lg"
           >
             <div className="px-4 pt-4 pb-6 space-y-2">
               {navLinks.map((link) => (
@@ -109,8 +100,9 @@ const Navbar = () => {
                <Link
                 to="/donate"
                 onClick={() => setIsOpen(false)}
-                className="block text-center mt-4 bg-orange-600 text-white px-6 py-3 rounded-lg font-bold shadow-md"
+                className="block text-center mt-4 bg-orange-600 text-white px-6 py-3 rounded-lg font-bold shadow-md flex items-center justify-center gap-2"
               >
+                <Heart size={18} className="fill-white" />
                 {t.nav.donate}
               </Link>
             </div>

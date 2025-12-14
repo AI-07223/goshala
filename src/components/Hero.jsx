@@ -47,24 +47,24 @@ const Hero = () => {
             </div>
           </div>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 drop-shadow-2xl leading-none tracking-tight">
+          {/* Reduced text size on mobile: text-4xl instead of 5xl */}
+          <h1 className="text-4xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 drop-shadow-2xl leading-none tracking-tight">
             {t.hero.title}
           </h1>
 
-          {/* Dynamic "Typing" effect could go here, for now a clean fade in */}
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="text-2xl md:text-3xl text-orange-50 mb-12 font-light drop-shadow-lg max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-3xl text-orange-50 mb-12 font-light drop-shadow-lg max-w-3xl mx-auto leading-relaxed"
           >
             {t.hero.subtitle}
           </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
             <Link
               to="/donate"
-              className="group relative px-10 py-5 bg-orange-600 hover:bg-orange-500 text-white text-xl font-bold rounded-full shadow-[0_20px_50px_rgba(234,88,12,0.4)] hover:shadow-[0_20px_50px_rgba(234,88,12,0.6)] transform hover:-translate-y-1 transition-all duration-300 overflow-hidden"
+              className="w-full sm:w-auto group relative px-10 py-5 bg-orange-600 hover:bg-orange-500 text-white text-xl font-bold rounded-full shadow-[0_20px_50px_rgba(234,88,12,0.4)] hover:shadow-[0_20px_50px_rgba(234,88,12,0.6)] transform hover:-translate-y-1 transition-all duration-300 overflow-hidden flex justify-center"
             >
               <span className="relative z-10 flex items-center gap-2">
                 {t.hero.cta} <Heart size={20} className="fill-white group-hover:scale-110 transition-transform" />
@@ -74,7 +74,7 @@ const Hero = () => {
 
             <Link
               to="/about"
-              className="px-10 py-5 bg-white/5 hover:bg-white/10 backdrop-blur-md text-white text-xl font-medium rounded-full border border-white/20 hover:border-white/40 transition-all duration-300 flex items-center gap-2 hover:scale-105"
+              className="w-full sm:w-auto px-10 py-5 bg-white/5 hover:bg-white/10 backdrop-blur-md text-white text-xl font-medium rounded-full border border-white/20 hover:border-white/40 transition-all duration-300 flex items-center justify-center gap-2 hover:scale-105"
             >
               {t.hero.learnMore || "Learn More"} <ArrowRight size={20} />
             </Link>
