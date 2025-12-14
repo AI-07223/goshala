@@ -39,6 +39,24 @@ export const config = {
     { id: 3, title: "Govardhan Puja", date: "Nov 15, 2024", excerpt: "Celebrations at the Goshala with 1000+ devotees." },
   ],
 
+  // Mock Quick Actions
+  quickActions: [
+    { id: 1, titleKey: "freeMilk", icon: "Droplet" },
+    { id: 2, titleKey: "feeding", icon: "Wheat" },
+    { id: 3, titleKey: "rescue", icon: "HeartPulse" },
+    { id: 4, titleKey: "foodDist", icon: "Utensils" }
+  ],
+
+  // Mock Astrology Services
+  astrologyServices: [
+    { id: 1, title: "Kundali", icon: "Star" },
+    { id: 2, title: "Match Making", icon: "Heart" },
+    { id: 3, title: "Horoscope", icon: "Sun" },
+    { id: 4, title: "Panchang", icon: "Calendar" },
+    { id: 5, title: "Numerology", icon: "Hash" },
+    { id: 6, title: "Vedic Talk", icon: "User" },
+  ],
+
   // Content (English & Hindi)
   content: {
     en: {
@@ -57,18 +75,17 @@ export const config = {
         cta: "Donate Now",
         learnMore: "Learn More",
       },
+      quickActions: {
+        freeMilk: "Free Milk Distribution",
+        feeding: "Stray Feeding",
+        rescue: "Rescue & Care",
+        foodDist: "Food Distribution"
+      },
       mission: {
-        title: "Our Sacred Mission",
+        title: "Know Us",
         description: "We are dedicated to providing shelter, food, and medical care to stray, abandoned, and sick cows. In our sanctuary, every life is revered.",
         quote: "Service to the cow is service to the universe.",
-        readMore: "Read our full story →"
-      },
-      impact: {
-        title: "Your Impact",
-        subtitle: "See what your donation can achieve.",
-        feed: "Feeds a cow for a day",
-        shelter: "Contributes to a new shed",
-        medical: "Provides critical medicine",
+        readMore: "Read More"
       },
       homeExtras: {
          howItWorksTitle: "How It Works",
@@ -79,7 +96,7 @@ export const config = {
          step2Desc: "Secure UPI or Bank Transfer.",
          step3Title: "We Serve",
          step3Desc: "100% reaches the cows immediately.",
-         testimonialsTitle: "Voices of Devotion",
+         testimonialsTitle: "Testimonials",
          testimonial1: "Visiting this Goshala changed my perspective on life. The peace here is divine.",
          testimonial1Author: "- Rajesh Kumar, Donor",
          testimonial2: "Transparency is what I love about them. I know my donation actually feeds a cow.",
@@ -87,15 +104,28 @@ export const config = {
          accreditationsTitle: "Accreditations & Recognitions",
          latestUpdatesTitle: "Latest News & Updates",
          readMoreBtn: "Read More",
+         achievementsTitle: "Our Achievements",
+         achievementsDesc: "Our dedication to cow welfare has been recognized by various governmental and non-governmental bodies.",
+         astrologyTitle: "Free Astrology",
+         astrologySubtitle: "Navigate life's cosmic journey with guidance.",
+         adoptPreviewTitle: "Adopt a Gauvansh"
       },
       initiatives: {
         title: "What We Do",
         subtitle: "Holistic care for the environment and Gauvansh.",
         items: [
-          { title: "Rescuing & Caring", desc: "We rescue injured and abandoned cows from streets and provide immediate medical attention." },
-          { title: "Organic Farming", desc: "Promoting chemical-free farming using cow dung manure to rejuvenate soil health." },
-          { title: "Free Milk Distribution", desc: "Distributing milk to saints, ashrams, and the needy without commercial intent." },
-          { title: "Bio-Gas Plant", desc: "Generating clean energy from cow dung to power our sanctuary sustainably." }
+          { title: "Protection", desc: "Sheltering 21,000+ stray cows." },
+          { title: "Shelter", desc: "Building large sheds for comfort." },
+          { title: "Medical Facility", desc: "24/7 Veterinary care." },
+          { title: "Free Milk", desc: "Distributed to saints and needy." },
+          { title: "Protection Drive", desc: "Rescuing abandoned cattle." },
+          { title: "Organic Farming", desc: "Promoting chemical-free food." },
+          { title: "Calamity Relief", desc: "Helping during floods/disasters." },
+          { title: "Yagya & Puja", desc: "Spiritual activities for peace." },
+          { title: "Hospital", desc: "Medical care for the poor." },
+          { title: "Yoga Center", desc: "Holistic health & meditation." },
+          { title: "Bio-Gas", desc: "Clean energy from cow dung." },
+          { title: "Bio Fertilizer", desc: "Organic manure production." }
         ]
       },
       footer: {
@@ -107,10 +137,10 @@ export const config = {
         subscribe: "Subscribe",
       },
       stats: {
-        saved: "Cows Saved",
-        care: "Medical Care",
-        meals: "Meals Served",
-        volunteer: "Volunteer Run"
+        saved: "Gauvansh Sheltered",
+        care: "Gauvansh Medicated",
+        meals: "Gauvansh Rescued",
+        volunteer: "Food Distributed"
       },
       // Inner Pages
       aboutPage: {
@@ -161,7 +191,7 @@ export const config = {
         category: "Category",
         breed: "Breed",
         age: "Age",
-        dob: "DOB" // Added Date of Birth Label
+        dob: "DOB"
       },
       contactPage: {
         title: "Get in Touch",
@@ -192,11 +222,17 @@ export const config = {
         cta: "अभी दान करें",
         learnMore: "और जानें",
       },
+      quickActions: {
+        freeMilk: "निःशुल्क दुग्ध वितरण",
+        feeding: "आवारा गौवंश खिलाना",
+        rescue: "बचाव और देखभाल",
+        foodDist: "भोजन वितरण"
+      },
       mission: {
-        title: "हमारा पवित्र उद्देश्य",
+        title: "हमें जानें",
         description: "हम बेसहारा और बीमार गायों को आश्रय, भोजन और चिकित्सा प्रदान करने के लिए समर्पित हैं। हमारे आश्रम में, हर जीवन पूजनीय है।",
         quote: "गौ सेवा ही विश्व सेवा है।",
-        readMore: "हमारी पूरी कहानी पढ़ें →"
+        readMore: "और पढ़ें"
       },
       impact: {
         title: "आपका प्रभाव",
@@ -214,7 +250,7 @@ export const config = {
          step2Desc: "सुरक्षित UPI या बैंक हस्तांतरण।",
          step3Title: "हम सेवा करते हैं",
          step3Desc: "100% तुरंत गायों तक पहुंचता है।",
-         testimonialsTitle: "भक्तों की आवाज",
+         testimonialsTitle: "प्रशंसापत्र",
          testimonial1: "इस गौशाला में आने से मेरा जीवन के प्रति नजरिया बदल गया। यहाँ की शांति दिव्य है।",
          testimonial1Author: "- राजेश कुमार, दानकर्ता",
          testimonial2: "पारदर्शिता ही मुझे इनके बारे में पसंद है। मुझे पता है कि मेरा दान वास्तव में गाय को खिलाता है।",
@@ -222,15 +258,28 @@ export const config = {
          accreditationsTitle: "मान्यताएं और पुरस्कार",
          latestUpdatesTitle: "नवीनतम समाचार",
          readMoreBtn: "और पढ़ें",
+         achievementsTitle: "हमारी उपलब्धियां",
+         achievementsDesc: "गौ कल्याण के प्रति हमारे समर्पण को विभिन्न सरकारी और गैर-सरकारी निकायों द्वारा मान्यता दी गई है।",
+         astrologyTitle: "निःशुल्क ज्योतिष",
+         astrologySubtitle: "मार्गदर्शन के साथ जीवन की ब्रह्मांडीय यात्रा को नेविगेट करें।",
+         adoptPreviewTitle: "एक गौवंश गोद लें"
       },
       initiatives: {
-        title: "हम क्या करते हैं", // What We Do
+        title: "हम क्या करते हैं",
         subtitle: "पर्यावरण और गौवंश के लिए समग्र देखभाल।",
         items: [
-          { title: "बचाव और देखभाल", desc: "हम सड़कों से घायल और लावारिस गायों को बचाते हैं और तत्काल चिकित्सा प्रदान करते हैं।" },
-          { title: "जैविक खेती", desc: "मिट्टी के स्वास्थ्य को फिर से जीवंत करने के लिए गोबर की खाद का उपयोग करके रसायन मुक्त खेती को बढ़ावा देना।" },
-          { title: "निःशुल्क दुग्ध वितरण", desc: "व्यावसायिक उद्देश्य के बिना संतों, आश्रमों और जरूरतमंदों को दूध वितरित करना।" },
-          { title: "बायो-गैस संयंत्र", desc: "हमारे अभयारण्य को स्थायी रूप से बिजली देने के लिए गाय के गोबर से स्वच्छ ऊर्जा उत्पन्न करना।" }
+          { title: "संरक्षण", desc: "21,000+ आवारा गायों को आश्रय।" },
+          { title: "आश्रय", desc: "आराम के लिए बड़े शेड बनाना।" },
+          { title: "चिकित्सा सुविधा", desc: "24/7 पशु चिकित्सा देखभाल।" },
+          { title: "निःशुल्क दूध", desc: "संतों और जरूरतमंदों को वितरित।" },
+          { title: "संरक्षण अभियान", desc: "परित्यक्त मवेशियों को बचाना।" },
+          { title: "जैविक खेती", desc: "रसायन मुक्त भोजन को बढ़ावा देना।" },
+          { title: "आपदा राहत", desc: "बाढ़/आपदाओं के दौरान मदद करना।" },
+          { title: "यज्ञ और पूजा", desc: "शांति के लिए आध्यात्मिक गतिविधियाँ।" },
+          { title: "अस्पताल", desc: "गरीबों के लिए चिकित्सा देखभाल।" },
+          { title: "योग केंद्र", desc: "समग्र स्वास्थ्य और ध्यान।" },
+          { title: "बायो-गैस", desc: "गाय के गोबर से स्वच्छ ऊर्जा।" },
+          { title: "बायो फर्टिलाइजर", desc: "जैविक खाद उत्पादन।" }
         ]
       },
       footer: {
@@ -242,10 +291,10 @@ export const config = {
         subscribe: "सदस्य बनें",
       },
       stats: {
-        saved: "गायों की रक्षा की",
-        care: "चिकित्सा देखभाल",
-        meals: "भोजन परोसा गया",
-        volunteer: "स्वयंसेवक संचालित"
+        saved: "गौवंश आश्रय",
+        care: "गौवंश औषधीय",
+        meals: "गौवंश बचाया",
+        volunteer: "भोजन वितरित"
       },
       // Inner Pages
       aboutPage: {
