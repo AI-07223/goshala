@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
+import TopBar from './TopBar';
 import Footer from './Footer';
 import { motion } from 'framer-motion';
 
@@ -8,7 +9,8 @@ const Layout = ({ children }) => {
   const location = useLocation();
 
   return (
-    <div className="flex flex-col min-h-screen bg-orange-50/30">
+    <div className="flex flex-col min-h-screen bg-orange-50/30 font-sans text-stone-800">
+      <TopBar />
       <Navbar />
       <motion.main
         key={location.pathname}

@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Heart, User } from 'lucide-react';
+import { Menu, X, Heart } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
-  const { t, toggleLanguage, language } = useLanguage();
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
-  // Check if we are on the home page
-  const isHome = location.pathname === '/';
-
-  // The navbar is "active" (solid background, dark text) if:
-  // 1. We have scrolled down
-  // 2. OR we are NOT on the home page (inner pages need solid navbar)
-  const isNavbarActive = scrolled || !isHome;
+  // With TopBar, Navbar is always white background (below hero) or sticky white
+  // To match reference, we make it white and clean.
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 40); // TopBar height approx
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -36,81 +31,54 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isNavbarActive
-          ? 'bg-white/95 backdrop-blur-md shadow-md py-3'
-          : 'bg-transparent py-5'
-      }`}
+      className={`sticky top-0 w-full z-40 transition-all duration-300 bg-white shadow-md`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2 group">
-           <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
-             {/* Simple Cow Icon Placeholder using Lucide for now */}
-             <Heart className={`w-6 h-6 ${isNavbarActive ? 'text-orange-600' : 'text-orange-500'} fill-current`} />
+        <Link to="/" className="flex items-center space-x-3 group">
+           <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center group-hover:bg-orange-200 transition-colors">
+             <Heart className="w-7 h-7 text-orange-600 fill-current" />
            </div>
-           <span className={`text-xl font-serif font-bold ${
-             isNavbarActive ? 'text-gray-800' : 'text-white'
-           } transition-colors`}>
-             Divya Goshala
-           </span>
+           <div className="flex flex-col">
+             <span className="text-2xl font-serif font-bold text-stone-800 leading-none">
+               Divya Goshala
+             </span>
+             <span className="text-xs text-orange-600 font-medium tracking-widest uppercase">
+               Gauraksha & Sewa
+             </span>
+           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden md:flex items-center space-x-1">
           {navLinks.map((link) => (
             <NavLink
               key={link.path}
               to={link.path}
               className={({ isActive }) => `
-                font-medium transition-colors hover:text-orange-500
-                ${isActive ? 'text-orange-500' : (isNavbarActive ? 'text-gray-700' : 'text-white')}
+                px-4 py-2 font-medium transition-colors rounded-lg text-sm uppercase tracking-wide
+                ${isActive ? 'text-orange-600 bg-orange-50' : 'text-gray-600 hover:text-orange-500 hover:bg-gray-50'}
               `}
             >
               {link.label}
             </NavLink>
           ))}
 
-          <button
-            onClick={toggleLanguage}
-            className={`px-3 py-1 rounded-full border transition-all ${
-              isNavbarActive
-                ? 'border-orange-500 text-orange-500 hover:bg-orange-50'
-                : 'border-white text-white hover:bg-white/20'
-            }`}
-          >
-            {language === 'en' ? 'HI' : 'EN'}
-          </button>
-
-          {/* Login Placeholder */}
-          <button className={`flex items-center gap-1 font-medium transition-colors hover:text-orange-500 ${isNavbarActive ? 'text-gray-700' : 'text-white'}`}>
-             <User size={18} />
-             {t.nav.login}
-          </button>
-
-          <Link
-            to="/donate"
-            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full font-bold shadow-lg transform hover:scale-105 transition-all"
-          >
-            {t.nav.donate}
-          </Link>
+          <div className="ml-4 pl-4 border-l border-gray-200">
+            <Link
+              to="/donate"
+              className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded-full font-bold shadow-lg transform hover:-translate-y-0.5 transition-all flex items-center gap-2"
+            >
+              <Heart size={18} className="fill-white" />
+              {t.nav.donate}
+            </Link>
+          </div>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-4">
-           <button
-            onClick={toggleLanguage}
-            className={`px-2 py-1 rounded border text-sm ${
-              isNavbarActive
-                ? 'border-orange-500 text-orange-500'
-                : 'border-white text-white'
-            }`}
-          >
-            {language === 'en' ? 'HI' : 'EN'}
-          </button>
-
-          <button onClick={() => setIsOpen(!isOpen)} className={isNavbarActive ? 'text-gray-800' : 'text-white'}>
-            {isOpen ? <X /> : <Menu />}
+          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-800">
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
       </div>
@@ -122,32 +90,26 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t"
+            className="md:hidden bg-white border-t border-gray-100 overflow-hidden"
           >
-            <div className="px-4 pt-2 pb-6 space-y-2">
+            <div className="px-4 pt-4 pb-6 space-y-2">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
                   className={({ isActive }) => `
-                    block px-3 py-2 rounded-md text-base font-medium
+                    block px-4 py-3 rounded-lg text-base font-medium
                     ${isActive ? 'bg-orange-50 text-orange-600' : 'text-gray-700 hover:bg-gray-50'}
                   `}
                 >
                   {link.label}
                 </NavLink>
               ))}
-
-               <button className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-orange-600 font-medium">
-                 <User size={18} />
-                 {t.nav.login}
-               </button>
-
                <Link
                 to="/donate"
                 onClick={() => setIsOpen(false)}
-                className="block text-center mt-4 bg-orange-500 text-white px-6 py-3 rounded-lg font-bold shadow-md"
+                className="block text-center mt-4 bg-orange-600 text-white px-6 py-3 rounded-lg font-bold shadow-md"
               >
                 {t.nav.donate}
               </Link>

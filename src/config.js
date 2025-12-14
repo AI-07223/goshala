@@ -18,13 +18,13 @@ export const config = {
 
   // Mock Data for "Adopt a Cow"
   adoptableCows: [
-    { id: 101, name: "Gauri", breed: "Gir", age: "5 Years", img: "https://images.unsplash.com/photo-1545634024-34537759a29e?q=80&w=2940&auto=format&fit=crop", desc: "Gentle soul, loves fresh grass." },
-    { id: 102, name: "Nandi", breed: "Sahiwal", age: "3 Years", img: "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?q=80&w=2940&auto=format&fit=crop", desc: "Rescued from street, very playful." },
-    { id: 103, name: "Shyama", breed: "Rathi", age: "7 Years", img: "https://images.unsplash.com/photo-1605001011156-cbf0b0f6f05c?q=80&w=2940&auto=format&fit=crop", desc: "Mother of two, needs medical care." },
-    { id: 104, name: "Bhole", breed: "Tharparkar", age: "4 Years", img: "https://images.unsplash.com/photo-1523480717984-24cba3ebae92?q=80&w=2940&auto=format&fit=crop", desc: "Strong bull, protector of the herd." },
+    { id: 101, category: "Cow", name: "Gauri", breed: "Gir", age: "5 Years", img: "https://images.unsplash.com/photo-1545634024-34537759a29e?q=80&w=2940&auto=format&fit=crop", desc: "Gentle soul, loves fresh grass." },
+    { id: 102, category: "Cow", name: "Nandi", breed: "Sahiwal", age: "3 Years", img: "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?q=80&w=2940&auto=format&fit=crop", desc: "Rescued from street, very playful." },
+    { id: 103, category: "Cow", name: "Shyama", breed: "Rathi", age: "7 Years", img: "https://images.unsplash.com/photo-1605001011156-cbf0b0f6f05c?q=80&w=2940&auto=format&fit=crop", desc: "Mother of two, needs medical care." },
+    { id: 104, category: "Bull", name: "Bhole", breed: "Tharparkar", age: "4 Years", img: "https://images.unsplash.com/photo-1523480717984-24cba3ebae92?q=80&w=2940&auto=format&fit=crop", desc: "Strong bull, protector of the herd." },
   ],
 
-  // Mock Data for Accreditations (using lucide icons or image placeholders)
+  // Mock Data for Accreditations
   accreditations: [
     { id: 1, name: "Animal Welfare Board", icon: "Shield" },
     { id: 2, name: "80G Tax Exemption", icon: "FileCheck" },
@@ -89,7 +89,7 @@ export const config = {
          readMoreBtn: "Read More",
       },
       initiatives: {
-        title: "Our Initiatives",
+        title: "What We Do",
         subtitle: "Holistic care for the environment and Gauvansh.",
         items: [
           { title: "Rescuing & Caring", desc: "We rescue injured and abandoned cows from streets and provide immediate medical attention." },
@@ -141,6 +141,7 @@ export const config = {
         accName: "Account Name",
         accNo: "Account No",
         ifsc: "IFSC Code",
+        addBtn: "Add Items to Donate",
         impacts: [
            { value: 100, label: "Green Fodder (Gau Grass)", desc: "Feed a cow fresh green grass." },
            { value: 500, label: "Full Day Meal", desc: "Complete nutrition for one cow for a day." },
@@ -157,8 +158,10 @@ export const config = {
         title: "Adopt a Gauvansh",
         subtitle: "Select a soul to support and build a lifelong bond.",
         adoptBtn: "Adopt Now",
+        category: "Category",
         breed: "Breed",
-        age: "Age"
+        age: "Age",
+        dob: "DOB" // Added Date of Birth Label
       },
       contactPage: {
         title: "Get in Touch",
@@ -221,7 +224,7 @@ export const config = {
          readMoreBtn: "और पढ़ें",
       },
       initiatives: {
-        title: "हमारी पहल",
+        title: "हम क्या करते हैं", // What We Do
         subtitle: "पर्यावरण और गौवंश के लिए समग्र देखभाल।",
         items: [
           { title: "बचाव और देखभाल", desc: "हम सड़कों से घायल और लावारिस गायों को बचाते हैं और तत्काल चिकित्सा प्रदान करते हैं।" },
@@ -273,6 +276,7 @@ export const config = {
         accName: "खाता नाम",
         accNo: "खाता संख्या",
         ifsc: "IFSC कोड",
+        addBtn: "दान करने के लिए आइटम जोड़ें",
         impacts: [
            { value: 100, label: "हरी घास (गौ ग्रास)", desc: "गाय को ताजी हरी घास खिलाएं।" },
            { value: 500, label: "पूरे दिन का भोजन", desc: "एक गाय के लिए एक दिन का पूरा पोषण।" },
@@ -289,8 +293,10 @@ export const config = {
         title: "एक गौवंश गोद लें",
         subtitle: "समर्थन करने के लिए एक आत्मा चुनें और जीवन भर का बंधन बनाएं।",
         adoptBtn: "अभी गोद लें",
+        category: "श्रेणी",
         breed: "नस्ल",
-        age: "उम्र"
+        age: "उम्र",
+        dob: "जन्मतिथि"
       },
       contactPage: {
         title: "संपर्क करें",
