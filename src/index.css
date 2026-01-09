@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  /* Spiritual & Traditional Palette */
+  --color-saffron: #FF9933;
+  --color-saffron-dark: #D67A18;
+  --color-saffron-light: #FFB366;
+
+  --color-earth: #8B4513;
+  --color-earth-light: #A0522D;
+
+  --color-cream: #FFFDD0;
+  --color-cream-light: #FFFEF0;
+
+  --color-green: #2E5936; /* Deep forest green for balance */
+
+  --color-text-main: #333333;
+  --color-text-light: #666666;
+  --color-white: #FFFFFF;
+
+  /* Typography */
+  --font-heading: 'Merriweather', 'Georgia', serif;
+  --font-body: 'Inter', 'Helvetica', sans-serif;
+
+  /* Shadows & Depth */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-cream-light);
+  color: var(--color-text-main);
+  -webkit-font-smoothing: antialiased;
+
+  /* Noise Texture for organic feel */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-earth);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-saffron);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-saffron-dark);
+}
+
+/* Utility Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(to right, var(--color-saffron), var(--color-saffron-dark));
+}
